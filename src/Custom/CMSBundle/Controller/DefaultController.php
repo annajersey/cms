@@ -14,4 +14,12 @@ class DefaultController extends Controller
             'pages'=>$pages
         ));
     }
+
+    public function displayAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $page = $em->getRepository('CustomCMSBundle:Page')->find($id);
+        return $this->render('CustomCMSBundle:Default:display.html.twig',array(
+            'page'=>$page
+        ));
+    }
 }
